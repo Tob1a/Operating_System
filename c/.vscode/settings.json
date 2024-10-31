@@ -1,0 +1,9 @@
+{
+    "C_Cpp.default.compilerPath": "/usr/bin/clang",
+    "files.associations": {
+        "signal.h": "c",
+        "__mutex_base": "c",
+        "atomic": "c",
+        "condition_variable": "c"
+    }
+}

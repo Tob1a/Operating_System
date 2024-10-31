@@ -1,0 +1,7 @@
+Importo (euro), Tipologia, Fornitore, Stato
+50.00, acqua, Hera, pagato
+75.50, luce, Enel, da pagare
+100.00, gas, Elca, pagato
+30.00, acqua, Hera, da pagare
+60.00, acqua, Fera, da pagare
+60.00, luce, Enel, pagato

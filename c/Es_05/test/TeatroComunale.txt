@@ -1,0 +1,5 @@
+20240115, "La Traviata", 50
+20240116, "Romeo e Giulietta", 30
+20240117, "Cenerentola", 20
+20240118, "Il Fantasma dell'Opera", 10
+20240119, "Amadeus", 5
