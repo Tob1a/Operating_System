@@ -2,22 +2,20 @@
 
 cd $1
 
-for i in *
-do
-    if [ $(grep -c $2 $i) -gt 0 ]
-    then
-        if [ "$(grep -c $2 $i)" -gt "$(cat /tmp/Maxnum.tmp)" ]
-        then
-            "$(grep -c $2 $i)" > "/tmp/Maxnum.tmp"
-            "$(pwd)/$i" > "$1/Max.tmp"
+for i in *.sh
+do 
+    if [ $(grep -c "#!/bin/sh" $i) -gt 0 ]; then
+        if [ $(grep -c "#!/bin/sh" $i) -gt $(cat "/tmp/Max.tmp") ];then
+            echo $(grep -c "#!/bin/sh" $i) > "/tmp/Max.tmp"
+            echo $i > "/tmp/NomeMax.tmp"
         fi
-        "$(grep -c $2 $i) $i" >> "$1/Trovati.tmp"
+        echo $i >> "/tmp/Script.txt"
     fi
 done
 
 for d in *
-do
-    if [ -d $d -a -x $d ]; then
-    sh ripeti_ric.sh $d $2
-    fi
-done
+ do
+     if [ -d $d ] && [ -x $d ];then
+         sh ripeti_ric.sh $d
+     fi
+ done

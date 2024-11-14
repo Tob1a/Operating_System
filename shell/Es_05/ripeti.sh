@@ -1,46 +1,30 @@
 #!/bin/sh
-if [ $# -lt 2 ]
-then 
-    echo "Ci sono meno di due argomenti come input";
-    exit 1;
+if [ $# -gt 2 ];then
+echo "Hai inserito piu di 2 argomenti"
+exit 1
 fi
-if [ -d $1 ] && [ -a $1 ]
-then
-    case $1 in 
-        /*) 
-                echo "E' un percorso assoluto e non relativo";
-                echo "ti voglio bene"
-                echo "Anche io"
-                exit 1;
-            ;;
-        *);;
-    esac
-else
-    echo "Errore nell'apertura della cartella";
-    exit 1;
-fi
+case $1 in 
+    /*) if [ ! -d $1 ];then
+            echo "Non è una cartella";
+            exit 1;
+        fi;;
+    *)  echo "Non e' una directory relativa"
+        exit 1;;
+esac
 
 export PATH=$PATH:`pwd`
 
+echo 0 > "/tmp/Max.tmp"
+> "/tmp/NomeMax.tmp"
 
-if [ "$1/Trovati.tmp" -f ]
-then
-    rm -f "$1/Trovati.tmp"
+if [ ! -f "/tmp/Script.txt" ];then
+    > "/tmp/Script.txt"
 fi
 
-if [ "$1/Max.tmp" -f ]
-then 
-    rm -f "$1/Max.tmp"
-fi
+sh ripeti_ric.sh $1
 
-> "$1/Trovati.tmp"
-> "$1/Max.tmp"
-0 > "/tmp/Maxnum.tmp"
+echo "Gli script massimi sono $(cat "/tmp/NomeMax.tmp") con $(cat "/tmp/Max.tmp")"
 
-sh ripeti_ric.sh $1 $2
-
-echo "I primi 5 file con il numero maggiore di occorenze sono $(head -n 5 | sort -n -d test/Trovati.tmp)"
-
-rm -f "/tmp/Maxnum.tmp"
-
-
+rm -f "/tmp/NomeMax.tmp"
+rm -f "/tmp/Script.txt"
+rm -f "/tmp/Max.tmp"
